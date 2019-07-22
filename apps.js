@@ -50,12 +50,12 @@ function init() {
     if(val1 != ''){
         if(parseInt(val1) > 1000){
             document.getElementById(DOMstrings.error1).textContent = 'Value must be smaller than 1000';
-            document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
+            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid1=false;
         }
         else if(isNaN(val1)){
             document.getElementById(DOMstrings.error1).textContent = 'Value must be a Number';
-            document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
+            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid1=false;
         }else{
             valid1=true;
@@ -66,16 +66,16 @@ function init() {
     }
 
     if(val2 != ''){
-        if(parseInt(val2) > 1000){
+        if(isNaN(val1)){
+            document.getElementById(DOMstrings.error2).textContent = 'Value must be a Number';
+            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
+            valid2=false;
+        }else if(parseInt(val2) > 1000){
             document.getElementById(DOMstrings.error2).textContent = 'Value must be smaller than 1000';
-            document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
+            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid2=false;
         }
-        else if(isNaN(val1)){
-            document.getElementById(DOMstrings.error2).textContent = 'Value must be a Number';
-            document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
-            valid2=false;
-        }else{
+        else {
             document.getElementById(DOMstrings.error2).textContent = '';
             sum += parseInt(val2);
             valid2=true;
@@ -84,14 +84,14 @@ function init() {
     }
 
     if(val3 != ''){
-        if(parseInt(val3) > 1000){
+        if(isNaN(val3)){
+            document.getElementById(DOMstrings.error3).textContent = 'Value must be a Number';
+            valid3=false;
+        }else if(parseInt(val3) > 1000){
             document.getElementById(DOMstrings.error3).textContent = 'Value must be smaller than 1000';
             valid3=false;
         }
-        else if(isNaN(val3)){
-            document.getElementById(DOMstrings.error3).textContent = 'Value must be a Number';
-            valid3=false;
-        }else{
+        else {
             document.getElementById(DOMstrings.error3).textContent = '';
             sum += parseInt(val3);
             valid3=true;
@@ -100,14 +100,15 @@ function init() {
     }
 
     if(val4 != ''){
-        if(parseInt(val4) > 1000){
+        if(isNaN(val4)){
+            document.getElementById(DOMstrings.error4).textContent = 'Value must be a Number';
+            valid4=false;
+        }
+        else if(parseInt(val4) > 1000){
             document.getElementById(DOMstrings.error4).textContent = 'Value must be smaller than 1000';
             valid4=false;
         }
-        else if(isNaN(val4)){
-            document.getElementById(DOMstrings.error4).textContent = 'Value must be a Number';
-            valid4=false;
-        }else{
+         else{
             document.getElementById(DOMstrings.error4).textContent = '';
             sum += parseInt(val4);
             valid4=false;
@@ -116,25 +117,26 @@ function init() {
     }
 
     if(val5 != ''){
-        if(parseInt(val5) > 1000){
-            document.getElementById(DOMstrings.error5).textContent = 'Value must be smaller than 1000';
-            
+        if(isNaN(val5)){
+            document.getElementById(DOMstrings.error5).textContent = 'Value must be a Number';
             valid5=false;
         }
-        else if(isNaN(val5)){
-            document.getElementById(DOMstrings.error5).textContent = 'Value must be a Number';
+        else if(parseInt(val5) > 1000){
+            document.getElementById(DOMstrings.error5).textContent = 'Value must be smaller than 1000';
             valid5=false;
         }else{
             document.getElementById(DOMstrings.error5).textContent = '';
             sum += parseInt(val5);
             valid5=true;
         }
-
-        if(valid1 || valid2 || valid3  || valid4  || valid5){
-            document.getElementById(DOMstrings.sum).textContent = sum;
-        }else{
-            document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
-        }
-        
     }
+
+    if(valid1 && valid2 && valid3  && valid4  && valid5){
+        alert("Here");
+        document.getElementById(DOMstrings.sum).textContent = sum;
+    }else{
+        document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
+    }
+        
+    
 }
