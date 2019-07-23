@@ -1,22 +1,19 @@
-var Total = function(value1, value2, value3, value4, value5) {
-    this.value1 = value1;
-    this.value2 = value2;
-    this.value3 = value3;
-    this.value4 = value4;
-    this.value5 = value5;
-}
-Total.prototype.calculateTotal  = function() {
-    return this.value1 + this.value2 + this.value3+ this.value4 + this.value5;
-};
-
-Total.prototype.displayTotal  = function() {
-    if(this.calculateTotal){
-        document.getElementById('sum').textContent = this.calculateTotal;
-    }else{
-        document.getElementById('sum').textContent = 'Invalid input';
+class Total {
+    constructor(value1 = 0, value2 = 0, value3 = 0, value4 = 0, value5 = 0) {
+        this.value1 = value1;
+        this.value2 = value2;
+        this.value3 = value3;
+        this.value4 = value4;
+        this.value5 = value5;
     }
-    
-};
+    calculateTotal() {
+        return this.value1+this.value12+this.value3+this.value4+this.value5;
+    }
+    displayTotal() {
+        document.getElementById('sum').textContent = 'Total: '+this.calculateTotal;
+    }
+}
+
 document.getElementById('sum').textContent = 'Total: 0';
 document.getElementById('summation_form').addEventListener('change', init);
 
@@ -40,7 +37,7 @@ function init() {
     
     let val1, val2,val3,val4,val5;
     let sum = 0;
-    let valid1,valid2,valid3,valid4,valid5;
+    let valid1=valid2=valid3=valid4=valid5=true;
     val1 = document.getElementById(DOMstrings.value1).value;
     val2 = document.getElementById(DOMstrings.value2).value;
     val3 = document.getElementById(DOMstrings.value3).value;
@@ -50,12 +47,10 @@ function init() {
     if(val1 != ''){
         if(parseInt(val1) > 1000){
             document.getElementById(DOMstrings.error1).textContent = 'Value must be smaller than 1000';
-            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid1=false;
         }
         else if(isNaN(val1)){
             document.getElementById(DOMstrings.error1).textContent = 'Value must be a Number';
-            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid1=false;
         }else{
             valid1=true;
@@ -66,13 +61,11 @@ function init() {
     }
 
     if(val2 != ''){
-        if(isNaN(val1)){
+        if(isNaN(val2)){
             document.getElementById(DOMstrings.error2).textContent = 'Value must be a Number';
-            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid2=false;
         }else if(parseInt(val2) > 1000){
             document.getElementById(DOMstrings.error2).textContent = 'Value must be smaller than 1000';
-            //document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
             valid2=false;
         }
         else {
@@ -111,7 +104,7 @@ function init() {
          else{
             document.getElementById(DOMstrings.error4).textContent = '';
             sum += parseInt(val4);
-            valid4=false;
+            valid4=true;
         }
         
     }
@@ -131,9 +124,10 @@ function init() {
         }
     }
 
-    if(valid1 && valid2 && valid3  && valid4  && valid5){
-        alert("Here");
-        document.getElementById(DOMstrings.sum).textContent = sum;
+    if(valid1 && valid2 && valid3 && valid4 && valid5){
+        obj = new Total(val1,val2,val3,val4,val5);
+        obj.displayTotal();
+        //document.getElementById(DOMstrings.sum).textContent = sum;
     }else{
         document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
     }
