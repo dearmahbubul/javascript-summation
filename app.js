@@ -1,16 +1,16 @@
 class Total {
-    constructor(value1 = 0, value2 = 0, value3 = 0, value4 = 0, value5 = 0) {
-        this.value1 = value1;
-        this.value2 = value2;
-        this.value3 = value3;
-        this.value4 = value4;
-        this.value5 = value5;
+    constructor(values) {
+        this.values = values;
     }
     calculateTotal() {
-        return this.value1+this.value12+this.value3+this.value4+this.value5;
+        let sum = 0;
+        this.values.forEach(function(element) {
+            sum += element;
+          });
+        return sum;
     }
-    displayTotal() {
-        document.getElementById('sum').textContent = 'Total: '+this.calculateTotal;
+    displayTotal(sum) {
+        document.getElementById('sum').textContent = 'Total: '+sum;
     }
 }
 
@@ -36,7 +36,6 @@ function init() {
 
     
     let val1, val2,val3,val4,val5;
-    let sum = 0;
     let valid1=valid2=valid3=valid4=valid5=true;
     val1 = document.getElementById(DOMstrings.value1).value;
     val2 = document.getElementById(DOMstrings.value2).value;
@@ -55,9 +54,10 @@ function init() {
         }else{
             valid1=true;
             document.getElementById(DOMstrings.error1).textContent = '';
-            sum += parseInt(val1);
         }
         
+    }else{
+        val1 = 0;
     }
 
     if(val2 != ''){
@@ -70,10 +70,11 @@ function init() {
         }
         else {
             document.getElementById(DOMstrings.error2).textContent = '';
-            sum += parseInt(val2);
             valid2=true;
         }
         
+    }else{
+        val2 = 0;
     }
 
     if(val3 != ''){
@@ -86,10 +87,11 @@ function init() {
         }
         else {
             document.getElementById(DOMstrings.error3).textContent = '';
-            sum += parseInt(val3);
             valid3=true;
         }
         
+    }else{
+        val3 = 0;
     }
 
     if(val4 != ''){
@@ -103,15 +105,16 @@ function init() {
         }
          else{
             document.getElementById(DOMstrings.error4).textContent = '';
-            sum += parseInt(val4);
             valid4=true;
         }
         
+    }else{
+        val4 = 0;
     }
 
     if(val5 != ''){
         if(isNaN(val5)){
-            document.getElementById(DOMstrings.error5).textContent = 'Value must be a Number';
+            document.getElementById(DOMstrings.error5).textContent = 'Value must be a integer Number';
             valid5=false;
         }
         else if(parseInt(val5) > 1000){
@@ -119,15 +122,25 @@ function init() {
             valid5=false;
         }else{
             document.getElementById(DOMstrings.error5).textContent = '';
-            sum += parseInt(val5);
             valid5=true;
         }
+    }else{
+        val5 = 0;
     }
 
     if(valid1 && valid2 && valid3 && valid4 && valid5){
-        obj = new Total(val1,val2,val3,val4,val5);
-        obj.displayTotal();
-        //document.getElementById(DOMstrings.sum).textContent = sum;
+        val1 = parseInt(val1);
+        val2 = parseInt(val2);
+        val3 = parseInt(val3);
+        val4 = parseInt(val4);
+        val5 = parseInt(val5);
+
+        let value = [
+            val1,val2,val3,val4,val5
+        ]
+        obj = new Total(value);
+        let sum = obj.calculateTotal();
+        obj.displayTotal(sum);
     }else{
         document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
     }
