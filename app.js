@@ -6,7 +6,7 @@ class Total {
         let sum = 0;
         this.values.forEach(function(element) {
             sum += element;
-          });
+        });
         return sum;
     }
     displayTotal(sum) {
@@ -23,7 +23,7 @@ function init() {
         summation_form: 'summation_form',
         value1: 'value1',
         value2: 'value2',
-        value3: 'value3', 
+        value3: 'value3',
         value4: 'value4',
         value5: 'value5',
         sum: 'sum',
@@ -34,7 +34,7 @@ function init() {
         error5: 'error5',
     };
 
-    
+
     let val1, val2,val3,val4,val5;
     let valid1=valid2=valid3=valid4=valid5=true;
     val1 = document.getElementById(DOMstrings.value1).value;
@@ -42,7 +42,7 @@ function init() {
     val3 = document.getElementById(DOMstrings.value3).value;
     val4 = document.getElementById(DOMstrings.value4).value;
     val5 = document.getElementById(DOMstrings.value5).value;
-    
+
     if(val1 != ''){
         if(parseInt(val1) > 1000){
             document.getElementById(DOMstrings.error1).textContent = 'Value must be smaller than 1000';
@@ -55,7 +55,7 @@ function init() {
             valid1=true;
             document.getElementById(DOMstrings.error1).textContent = '';
         }
-        
+
     }else{
         val1 = 0;
     }
@@ -72,7 +72,7 @@ function init() {
             document.getElementById(DOMstrings.error2).textContent = '';
             valid2=true;
         }
-        
+
     }else{
         val2 = 0;
     }
@@ -89,7 +89,7 @@ function init() {
             document.getElementById(DOMstrings.error3).textContent = '';
             valid3=true;
         }
-        
+
     }else{
         val3 = 0;
     }
@@ -103,11 +103,11 @@ function init() {
             document.getElementById(DOMstrings.error4).textContent = 'Value must be smaller than 1000';
             valid4=false;
         }
-         else{
+        else{
             document.getElementById(DOMstrings.error4).textContent = '';
             valid4=true;
         }
-        
+
     }else{
         val4 = 0;
     }
@@ -137,13 +137,11 @@ function init() {
 
         let value = [
             val1,val2,val3,val4,val5
-        ]
+        ];
         obj = new Total(value);
         let sum = obj.calculateTotal();
         obj.displayTotal(sum);
     }else{
         document.getElementById(DOMstrings.sum).textContent = 'Invalid Input';
     }
-        
-    
 }
