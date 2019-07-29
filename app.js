@@ -57,6 +57,7 @@ function init() {
         }
 
     }else{
+        document.getElementById(DOMstrings.error1).textContent = '';
         val1 = 0;
     }
 
@@ -74,6 +75,7 @@ function init() {
         }
 
     }else{
+        document.getElementById(DOMstrings.error2).textContent = '';
         val2 = 0;
     }
 
@@ -91,6 +93,7 @@ function init() {
         }
 
     }else{
+        document.getElementById(DOMstrings.error3).textContent = '';
         val3 = 0;
     }
 
@@ -109,6 +112,7 @@ function init() {
         }
 
     }else{
+        document.getElementById(DOMstrings.error4).textContent = '';
         val4 = 0;
     }
 
@@ -125,6 +129,7 @@ function init() {
             valid5=true;
         }
     }else{
+	    document.getElementById(DOMstrings.error5).textContent = '';
         val5 = 0;
     }
 
